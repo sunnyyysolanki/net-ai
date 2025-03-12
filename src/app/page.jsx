@@ -1,31 +1,61 @@
+"use client";
+
 import Image from "next/image";
 import { Download } from "@geist-ui/icons";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import Marquee from "react-fast-marquee";
 import LogoMarquee from "@/components/logo-marquee";
+import { motion } from "framer-motion";
 
 export default function Home() {
   return (
     <div className=" flex flex-col min-h-screen p-8 pb-20 gap-16 sm:p-20 ">
       <main className="flex justify-between w-full">
         <div className="left flex flex-col gap-4 w-1/2">
-          <div className="flex flex-col text-8xl font-extrabold">
+          <motion.div
+            variants={{
+              hidden: { opacity: 0, y: 75 },
+              visible: { opacity: 1, y: 0 },
+            }}
+            initial="hidden"
+            animate="visible"
+            transition={{ duration: 0.5, delay: 0.25 }}
+            className="flex flex-col text-8xl font-extrabold"
+          >
             <p className=" drop-shadow-[0_4px_8px_rgba(255,255,255,0.4)]">
               The
             </p>
             <p className=" drop-shadow-[0_4px_8px_rgba(255,255,255,0.4)]">
               NET AI
             </p>
-          </div>
-          <p>Network Incident Engine</p>
-          <p className="pt-2 mb-6 w-[500px] text-gray-500">
-            The NET AI (Network Incident Engine) is an advanced AI-driven system
-            designed to detect, analyze, and respond to network incidents in
-            real-time.
-          </p>
+          </motion.div>
+          <motion.div
+            variants={{
+              hidden: { opacity: 0, y: 75 },
+              visible: { opacity: 1, y: 0 },
+            }}
+            initial="hidden"
+            animate="visible"
+            transition={{ duration: 0.5, delay: 0.25 }}
+          >
+            <p>Network Incident Engine</p>
+            <p className="pt-2 mb-6 w-[500px] text-gray-500">
+              The NET AI (Network Incident Engine) is an advanced AI-driven
+              system designed to detect, analyze, and respond to network
+              incidents in real-time.
+            </p>
+          </motion.div>
           <div className="flex  gap-6 ">
-            <div>
+            <motion.div
+              variants={{
+                hidden: { opacity: 0, x: -75 },
+                visible: { opacity: 1, x: 0 },
+              }}
+              initial="hidden"
+              animate="visible"
+              transition={{ duration: 0.5, delay: 0.25 }}
+            >
               <Link href="/linux-download">
                 <Button className="cursor-pointer p-6 rounded-md font-semibold ">
                   <span>Download For Linux</span>
@@ -34,18 +64,35 @@ export default function Home() {
                   </span>
                 </Button>
               </Link>
-            </div>
-            <div>
+            </motion.div>
+            <motion.div
+              variants={{
+                hidden: { opacity: 0, x: 75 },
+                visible: { opacity: 1, x: 0 },
+              }}
+              initial="hidden"
+              animate="visible"
+              transition={{ duration: 0.5, delay: 0.25 }}
+            >
               <Link href="/window-download">
                 <Button className="cursor-pointer p-6 rounded-md font-semibold ">
                   <span>Download For Windows</span>
                   <Download />
                 </Button>
               </Link>
-            </div>
+            </motion.div>
           </div>
         </div>
-        <div className="right w-1/2">
+        <motion.div
+          variants={{
+            hidden: { opacity: 0, x: 95 },
+            visible: { opacity: 1, x: 0 },
+          }}
+          initial="hidden"
+          animate="visible"
+          transition={{ duration: 0.5, delay: 0.25 }}
+          className="right w-1/2"
+        >
           <div className="relative w-full h-[500px] flex items-center rounded-xl justify-center bg-gradient-to-r from-gray-900 via-gray-800 to-black shadow-xl overflow-hidden">
             {/* Background Blur Effect */}
             <div className="absolute inset-0 bg-opacity-30 backdrop-blur-md"></div>
@@ -65,7 +112,7 @@ export default function Home() {
               </p>
             </div>
           </div>
-        </div>
+        </motion.div>
       </main>
 
       {/* marquee */}
